@@ -1,31 +1,33 @@
-////////////////////////////////////
-// NAVIGATION SHOW/HIDE
+let menu_button = document.querySelector('.header__burger');
+let menu_itself = document.querySelector('.header__menu');
+let menu_list = document.querySelector('.header__list');
+let body = document.querySelector('body');
 
-$("nav ul").hide();
+menu_button.onclick = function() {
+  menu_button.classList.toggle('active');
+  menu_itself.classList.toggle('active');
+  body.classList.toggle('lock');
+};
 
-$(".nav-toggle").click( function() {
-  $("nav ul").slideToggle("medium");
+menu_list.onclick = function() {
+  menu_button.classList.toggle('active');
+  menu_itself.classList.toggle('active');
+  body.classList.toggle('lock');
+};
+
+/*с подключением библиотеки jquery:
+
+$(document).ready(function() {
+    $('.header__burger').click(function(event) {
+        $('.header__burger,.header__menu').toggleClass('active');
+        $('body').toggleClass('lock');
+    });
 });
 
-$("nav ul li a, .brand a").click( function() {
-  $("nav ul").hide();
-});
-
-////////////////////////////////////
-// SMOOTH SCROLLING WITH NAV HEIGHT OFFSET
-
-$(function() {
-  var navHeight = $("nav").outerHeight();
-  $('a[href*="#"]:not([href="#"])').click(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-      if (target.length) {
-        $('html, body').animate({
-          scrollTop: target.offset().top - navHeight
-        }, 1000);
-        return false;
-      }
-    }
-  });
-});
+// закрытие меню при клике на ссылку
+$(document).ready(function() {
+    $('.header__list').click(function(event) {
+        $('.header__burger,.header__menu').toggleClass('active');
+        $('body').toggleClass('lock');
+    });
+});*/
